@@ -236,12 +236,74 @@ describe("calculate", () => {
     ]);
   });
 
-  fit("handles edge case", () => {
-    const map = calculate(
-      "words are a kind of shape",
-      "shapes are a kind of word"
-    );
+  it("handles edge case", () => {
+    const map = calculate("it's.", "Here?");
 
-    console.log(map);
+    expect(map).toEqual([
+      [
+        "i",
+        [
+          "i",
+          "j",
+          "k",
+          "l",
+          "m",
+          "n",
+          "o",
+          "p",
+          "q",
+          "r",
+          "s",
+          "t",
+          "u",
+          "v",
+          "w",
+          "x",
+          "y",
+          "z",
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+        ],
+      ],
+      ["t", ["t", "u", "v", "w", "x", "y", "z", "a", "b", "c", "d", "e"]],
+      [
+        "s",
+        [
+          "s",
+          "t",
+          "u",
+          "v",
+          "w",
+          "x",
+          "y",
+          "z",
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+          "i",
+          "j",
+          "k",
+          "l",
+          "m",
+          "n",
+          "o",
+          "p",
+          "q",
+          "r",
+        ],
+      ],
+      [" ", [" ", "a", "b", "c", "d", "e"]],
+    ]);
   });
 });

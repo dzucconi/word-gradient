@@ -2,8 +2,11 @@ import { configure } from "queryparams";
 import { calculate } from "./utils";
 
 const {
-  params: { start, end },
-} = configure({ start: "dark", end: "mode" });
+  params: { input },
+} = configure({
+  input:
+    "The room is full of fear. With empty wavelength touch. It's coming in a rush.",
+});
 
 const render = (start: string, end: string) => {
   const data = calculate(start, end);
@@ -20,7 +23,12 @@ const render = (start: string, end: string) => {
   return `<div class="Path">${path.join("<br />")}</div>`;
 };
 
-document.getElementById("Root")!.innerHTML = render(
-  start.toLowerCase(),
-  end.toLowerCase()
-);
+const words = input.split(" ");
+
+document.getElementById("Root")!.innerHTML = words
+  .map((current, i) => {
+    const next = words[i + 1];
+    if (!next) return "";
+    return render(current, next);
+  })
+  .join("");

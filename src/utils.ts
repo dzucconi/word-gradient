@@ -22,6 +22,10 @@ export const column = (a: string, b: string, letters = [a]) => {
 };
 
 export const calculate = (start: string, end: string) => {
+  [start, end] = [start, end].map((x) =>
+    x.toLowerCase().replace(/[\p{P}$+<=>^`|~]/gu, "")
+  );
+
   if (start.length !== end.length) {
     const longest = Math.max(start.length, end.length);
 
